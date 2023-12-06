@@ -6,6 +6,7 @@ import (
 	"github.com/perses/perses/pkg/model/api/v1"
 	//"github.com/perses/perses/schemas/common"
 	myPanels "github.com/AntoineThebaud/poc-perses-dac/panels"
+	myVars "github.com/AntoineThebaud/poc-perses-dac/variables"
 )
 
 "windowsDashboard": v1.#Dashboard & {
@@ -18,5 +19,6 @@ import (
 			"cpuUsage": myPanels.#cpuUsage & {#metric: "wmi_cpu"},
 			"ramUsage": myPanels.#ramUsage & {#metric: "wmi_ram"},
 		}
+		variables: myVars.#variables
 	}
 }

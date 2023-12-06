@@ -6,6 +6,7 @@ import (
 	"github.com/perses/perses/pkg/model/api/v1"
 	//"github.com/perses/perses/schemas/common"
 	myPanels "github.com/AntoineThebaud/poc-perses-dac/panels"
+	myVars "github.com/AntoineThebaud/poc-perses-dac/variables"
 )
 
 "linuxDashboard": v1.#Dashboard & {
@@ -18,5 +19,6 @@ import (
 			"cpuUsage": myPanels.#cpuUsage & {#metric: "node_cpu_usage"},
 			"ramUsage": myPanels.#ramUsage & {#metric: "node_memory_usage"},
 		}
+		variables: myVars.#variables
 	}
 }

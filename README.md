@@ -39,3 +39,20 @@ With the provided example, in order to validate & build the final output of all 
 ```
 cue eval dashboards/* --out yaml
 ```
+
+The end result of the CUE definitions available in this repo can be visualized with the `output.yaml` file:
+
+To regenerate this file, simply run:
+```
+cue eval dashboards/* --out yaml > output.yaml
+```
+
+This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
+
+# TODO
+- extract "filter builder" in an external lib + use it in the panels
+- layout helper
+- reusable options
+- complexify variables:
+  - clause by stuff 
+  - manage the case where a variable should not "chain" to previous ones

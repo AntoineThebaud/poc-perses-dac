@@ -1,0 +1,154 @@
+linuxDashboard:
+  kind: Dashboard
+  metadata:
+    name: My Linux Dashboard
+    project: My project
+  spec:
+    variables:
+      - kind: ListVariable
+        spec:
+          name: country
+          allowAllValue: false
+          allowMultiple: false
+          plugin:
+            kind: PrometheusPromQLVariable
+            spec:
+              datasource:
+                name: promDemo
+              expr: group by (country) (up{})
+              labelName: country
+      - kind: ListVariable
+        spec:
+          name: region
+          allowAllValue: false
+          allowMultiple: true
+          plugin:
+            kind: PrometheusPromQLVariable
+            spec:
+              datasource:
+                name: promDemo
+              expr: group by (region) (up{country="$country"})
+              labelName: region
+      - kind: ListVariable
+        spec:
+          name: city
+          allowAllValue: true
+          allowMultiple: true
+          plugin:
+            kind: PrometheusPromQLVariable
+            spec:
+              datasource:
+                name: promDemo
+              expr: group by (city) (up{country="$country",region="$region"})
+              labelName: city
+    panels:
+      cpuUsage:
+        kind: Panel
+        spec:
+          display:
+            name: CPU Usage
+          plugin:
+            kind: BarChart
+            spec:
+              calculation: last
+          queries:
+            - kind: TimeSeriesQuery
+              spec:
+                plugin:
+                  kind: PrometheusTimeSeriesQuery
+                  spec:
+                    query: node_cpu_usage{node="$node",job="system"}
+      ramUsage:
+        kind: Panel
+        spec:
+          display:
+            name: My Timeseries Panel
+          plugin:
+            kind: TimeSeriesChart
+            spec: {}
+          queries:
+            - kind: TimeSeriesQuery
+              spec:
+                plugin:
+                  kind: PrometheusTimeSeriesQuery
+                  spec:
+                    query: node_memory_usage{node="$node",job="system"}
+    layouts: []
+    duration: 1h
+windowsDashboard:
+  kind: Dashboard
+  metadata:
+    name: My Windows Dashboard
+    project: My project
+  spec:
+    variables:
+      - kind: ListVariable
+        spec:
+          name: country
+          allowAllValue: false
+          allowMultiple: false
+          plugin:
+            kind: PrometheusPromQLVariable
+            spec:
+              datasource:
+                name: promDemo
+              expr: group by (country) (up{})
+              labelName: country
+      - kind: ListVariable
+        spec:
+          name: region
+          allowAllValue: false
+          allowMultiple: true
+          plugin:
+            kind: PrometheusPromQLVariable
+            spec:
+              datasource:
+                name: promDemo
+              expr: group by (region) (up{country="$country"})
+              labelName: region
+      - kind: ListVariable
+        spec:
+          name: city
+          allowAllValue: true
+          allowMultiple: true
+          plugin:
+            kind: PrometheusPromQLVariable
+            spec:
+              datasource:
+                name: promDemo
+              expr: group by (city) (up{country="$country",region="$region"})
+              labelName: city
+    panels:
+      cpuUsage:
+        kind: Panel
+        spec:
+          display:
+            name: CPU Usage
+          plugin:
+            kind: BarChart
+            spec:
+              calculation: last
+          queries:
+            - kind: TimeSeriesQuery
+              spec:
+                plugin:
+                  kind: PrometheusTimeSeriesQuery
+                  spec:
+                    query: wmi_cpu{node="$node",job="system"}
+      ramUsage:
+        kind: Panel
+        spec:
+          display:
+            name: My Timeseries Panel
+          plugin:
+            kind: TimeSeriesChart
+            spec: {}
+          queries:
+            - kind: TimeSeriesQuery
+              spec:
+                plugin:
+                  kind: PrometheusTimeSeriesQuery
+                  spec:
+                    query: wmi_ram{node="$node",job="system"}
+    layouts: []
+    duration: 1h
