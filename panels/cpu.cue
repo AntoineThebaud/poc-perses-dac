@@ -1,23 +1,14 @@
 package panels
 
 import (
-	"strings"
-	"github.com/perses/perses/pkg/model/api/v1"
+	"github.com/perses/perses/dac:panelBuilder"
 	barChart "github.com/perses/perses/schemas/panels/bar:model"
 	promQuery "github.com/perses/perses/schemas/queries/prometheus:model"
 )
 
-#cpuUsage: v1.#Panel & {
+#cpuUsage: this=panelBuilder & {
 	#os: *"linux" | "windows"
 	#filter: string
-	#clause: "by" | "without" | *""
-	#clauseLabels: [...string] | *[]
-	#builtClause: string | *""
-	if #clause != "" {
-		#builtClause: """
-		\(#clause) (\(strings.Join(#clauseLabels, ",")))
-		"""
-	}
 
 	#metric: [ // switch
 		if #os == "windows" {
@@ -33,7 +24,7 @@ import (
 			{
 				kind: "TimeSeriesQuery" // TODO lacking validation here
 				spec: plugin: promQuery & {
-					spec: query: "sum \(#builtClause) (\(#metric){\(#filter)})"
+					spec: query: "sum \(this.#builtClause) (\(#metric){\(#filter)})"
 				}
 			}
 		]

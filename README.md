@@ -50,7 +50,6 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- extract the dynamic aggregation clause logic in a Perses lib
 - layout helper
 - links between dashboards
 - reusable options
