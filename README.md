@@ -21,7 +21,6 @@ This should no longer be needed at some point hopefully, but for the moment the 
 
 You can copy the [generated files](./cue.mode/gen/github.com/perses) from this repo to get all the patches.
 
-
 ## 3. Add the plugins schemas
 
 Currently there is no way to get these via proper dependency management, although this is being worked on by the CUE maintainers (see https://github.com/cue-lang/cue/discussions/2330).
@@ -29,3 +28,14 @@ Currently there is no way to get these via proper dependency management, althoug
 Thus, for the moment, you have to copy the [`schemas`](https://github.com/perses/perses/tree/main/schemas) folder of the perses repo & paste it into `./cue.mod/usr/github.com/perses/perses` (create this folder path manually).
 
 The schemas available in this poc repo correspond to the revision `3b1e341` of the perses repo.
+
+/!\ some manual changes were done here too, but should be backported to the Perses repo at some point.
+
+# Develop
+
+Create your panels, dashboards etc.. based on the example provided in this repo.
+
+With the provided example, in order to validate & build the final output of all the dashboards, you should run:
+```
+cue eval dashboards/* --out yaml
+```
