@@ -22,6 +22,8 @@ import (
 	strings.Join([for k2, var in #input if k2 < k {"\(var.label)=\"$\(var.label)\""}], ",")
 }]
 
+#fullMatcher: strings.Join([for var in #input {"\(var.label)=\"$\(var.label)\""}], ",")
+
 #exprs: [for k, v in #input {
 	"group by (" + v.label + ") (" + v.metric + "{" + #matchers[k] + "})"
 }]

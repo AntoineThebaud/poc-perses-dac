@@ -16,8 +16,8 @@ import (
 	}
 	spec: {
 		panels: {
-			"cpuUsage": myPanels.#cpuUsage & { #os: "windows", #filter: myVars.#fullMatcher },
-			"ramUsage": myPanels.#ramUsage & { #os: "windows", #filter: myVars.#fullMatcher, #clause: "without", #clauseLabels: ["country"] },
+			"cpuUsage": myPanels.#cpuUsage & { #os: "windows", #filter: myVars.#builder.#fullMatcher },
+			"ramUsage": myPanels.#ramUsage & { #os: "windows", #filter: myVars.#builder.#fullMatcher, #clause: "without", #clauseLabels: ["country"] },
 		}
 		variables: myVars.#builder.#variables
 	}

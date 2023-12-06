@@ -33,5 +33,3 @@ import (
 ]
 
 #builder: varsBuilder & { #input: #myInput }
-
-#fullMatcher: #builder.#matchers[len(#builder.#matchers) - 1]
