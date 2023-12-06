@@ -16,9 +16,9 @@ import (
 	}
 	spec: {
 		panels: {
-			"cpuUsage": myPanels.#cpuUsage & { #filter: myVars.#builder.#fullMatcher, #clause: "by", #clauseLabels: ["city"] },
-			"ramUsage": myPanels.#ramUsage & { #filter: myVars.#builder.#fullMatcher },
+			"cpuUsage": myPanels.#cpuUsage & { #filter: myVars.#fullMatcher, #clause: "by", #clauseLabels: ["city"] },
+			"ramUsage": myPanels.#ramUsage & { #filter: myVars.#fullMatcher },
 		}
-		variables: myVars.#builder.#variables
+		variables: myVars.#variables
 	}
 }

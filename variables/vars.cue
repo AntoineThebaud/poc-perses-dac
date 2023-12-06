@@ -32,4 +32,4 @@ import (
 	}
 ]
 
-#builder: varsBuilder & { #input: #myInput }
+varsBuilder & { #input: #myInput }
