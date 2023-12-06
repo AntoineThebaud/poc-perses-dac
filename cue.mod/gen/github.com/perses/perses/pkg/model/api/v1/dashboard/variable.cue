@@ -2,10 +2,7 @@
 
 package dashboard
 
-import (
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/variable"
-)
+import "github.com/perses/perses/pkg/model/api/v1/variable"
 
 #TextVariableSpec: {
     name: string @go(Name)

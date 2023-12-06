@@ -9,13 +9,7 @@ import "github.com/perses/perses/pkg/model/api/v1/common"
 	sliceValues: [...string] @go(SliceValues)
 }
 
-#Sort: "none"
-    | "alphabetical-asc"
-    | "alphabetical-desc"
-    | "numerical-asc"
-    | "numerical-desc"
-    | "alphabetical-ci-asc"
-    | "alphabetical-ci-desc"
+#Sort: "none" | "alphabetical-asc" | "alphabetical-desc" | "numerical-asc" | "numerical-desc" | "alphabetical-ci-asc" | "alphabetical-ci-desc"
 
 #ListSpec: {
 	display?: #Display @go(Display)

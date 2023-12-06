@@ -2,6 +2,8 @@
 
 package dashboard
 
+import "github.com/perses/perses/pkg/model/api/v1/common"
+
 #GridItem: {
 	x:       int             @go(X)
 	y:       int             @go(Y)
