@@ -26,6 +26,6 @@ You can copy the [generated files](./cue.mode/gen/github.com/perses) from this r
 
 Currently there is no way to get these via proper dependency management, although this is being worked on by the CUE maintainers (see https://github.com/cue-lang/cue/discussions/2330).
 
-Thus, for the moment, you have to copy the [`schemas`](https://github.com/perses/perses/tree/main/schemas) folder of the perses repo & paste it into `./cue.mod/usr`.
+Thus, for the moment, you have to copy the [`schemas`](https://github.com/perses/perses/tree/main/schemas) folder of the perses repo & paste it into `./cue.mod/usr/github.com/perses/perses` (create this folder path manually).
 
 The schemas available in this poc repo correspond to the revision `3b1e341` of the perses repo.
