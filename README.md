@@ -50,8 +50,10 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
+- dynamic aggregation clause
 - layout helper
+- links between dashboards
 - reusable options
 - complexify variables:
-  - clause by stuff 
+  - manage different types of variables (constants, other plugins etc.)
   - manage the case where a variable should not "chain" to previous ones
