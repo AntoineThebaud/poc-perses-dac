@@ -1,6 +1,7 @@
 package panels
 
 import (
+	"strings"
 	"github.com/perses/perses/pkg/model/api/v1"
 	timeseriesChart "github.com/perses/perses/schemas/panels/time-series:model"
 	promQuery "github.com/perses/perses/schemas/queries/prometheus:model"
@@ -9,6 +10,13 @@ import (
 #ramUsage: v1.#Panel & {
 	#os: *"linux" | "windows"
 	#filter: string
+	#clause: "by" | "without" | *""
+	#clauseLabels: [...string] | *[]
+	#builtClause: string | *""
+	if #clause != "" {
+		#builtClauseLabels: strings.Join(#clauseLabels, ",")
+		#builtClause: "\(#clause) (\(#builtClauseLabels))" 
+	}
 
 	#metric: [ // switch
 		if #os == "windows" {
@@ -24,7 +32,7 @@ import (
 			{
 				kind: "TimeSeriesQuery" // TODO lacking validation here
 				spec: plugin: promQuery & {
-					spec: query: "\(#metric){\(#filter)}"
+					spec: query: "sum \(#builtClause) (\(#metric){\(#filter)})"
 				}
 			}
 		]

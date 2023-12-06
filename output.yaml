@@ -57,7 +57,7 @@ linuxDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: node_cpu_usage{country="$country",region="$region"}
+                    query: sum by (city) (node_cpu_usage{country="$country",region="$region"})
       ramUsage:
         kind: Panel
         spec:
@@ -72,7 +72,7 @@ linuxDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: node_memory_usage{country="$country",region="$region"}
+                    query: sum  (node_memory_usage{country="$country",region="$region"})
     layouts: []
     duration: 1h
 windowsDashboard:
@@ -134,7 +134,7 @@ windowsDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: wmi_cpu{country="$country",region="$region"}
+                    query: sum  (wmi_cpu{country="$country",region="$region"})
       ramUsage:
         kind: Panel
         spec:
@@ -149,6 +149,6 @@ windowsDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: wmi_ram{country="$country",region="$region"}
+                    query: sum without (country) (wmi_ram{country="$country",region="$region"})
     layouts: []
     duration: 1h
