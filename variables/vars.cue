@@ -8,7 +8,7 @@ import (
 #ds: "promDemo"
 #metric: "up"
 
-#variablesInput: [...varsBuilder.#variableInput] & [
+#myInput: varsBuilder.#input & [
 	{
 		kind: #kind
 		datasource: name: #ds
@@ -31,3 +31,7 @@ import (
 		allowMultiple: true
 	}
 ]
+
+#builder: varsBuilder & { #input: #myInput }
+
+#fullMatcher: #builder.#matchers[len(#builder.#matchers) - 1]

@@ -9,26 +9,24 @@ import (
 	v1Variable "github.com/perses/perses/pkg/model/api/v1/variable"
 )
 
-#variableInput: {
+#input: [...{
     kind: string
     datasource: name: string
     metric: string
     label: string
     allowAllValue: bool | *false
     allowMultiple: bool | *false
-}
-
-#variablesInput: [...#variableInput]
-
-#matchers: [ for k, _ in #variablesInput {
-	strings.Join([for k2, var in #variablesInput if k2 < k {"\(var.label)=\"$\(var.label)\""}], ",")
 }]
 
-#exprs: [for k, v in #variablesInput {
+#matchers: [ for k, _ in #input {
+	strings.Join([for k2, var in #input if k2 < k {"\(var.label)=\"$\(var.label)\""}], ",")
+}]
+
+#exprs: [for k, v in #input {
 	"group by (" + v.label + ") (" + v.metric + "{" + #matchers[k] + "})"
 }]
 
-#variables: [...v1Dashboard.#Variable] & [ for id, var in #variablesInput {
+#variables: [...v1Dashboard.#Variable] & [ for id, var in #input {
 	kind: v1Variable.#KindList
 	spec: v1Dashboard.#ListVariableSpec & {
 		name: var.label

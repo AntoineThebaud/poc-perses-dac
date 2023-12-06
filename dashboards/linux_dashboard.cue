@@ -7,10 +7,7 @@ import (
 	//"github.com/perses/perses/schemas/common"
 	myPanels "github.com/AntoineThebaud/poc-perses-dac/panels"
 	myVars "github.com/AntoineThebaud/poc-perses-dac/variables"
-	"github.com/perses/perses/dac:varsBuilder"
 )
-
-#myVarsBuilder: varsBuilder & { #variablesInput: myVars.#variablesInput}
 
 "linuxDashboard": v1.#Dashboard & {
 	metadata: {
@@ -19,9 +16,9 @@ import (
 	}
 	spec: {
 		panels: {
-			"cpuUsage": myPanels.#cpuUsage & {#metric: "node_cpu_usage"},
-			"ramUsage": myPanels.#ramUsage & {#metric: "node_memory_usage"},
+			"cpuUsage": myPanels.#cpuUsage & { #metric: "node_cpu_usage", #filter: myVars.#fullMatcher },
+			"ramUsage": myPanels.#ramUsage & { #metric: "node_memory_usage", #filter: myVars.#fullMatcher },
 		}
-		variables: #myVarsBuilder.#variables
+		variables: myVars.#builder.#variables
 	}
 }

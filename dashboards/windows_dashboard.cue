@@ -7,10 +7,7 @@ import (
 	//"github.com/perses/perses/schemas/common"
 	myPanels "github.com/AntoineThebaud/poc-perses-dac/panels"
 	myVars "github.com/AntoineThebaud/poc-perses-dac/variables"
-	"github.com/perses/perses/dac:varsBuilder"
 )
-
-#myVarsBuilder: varsBuilder & { #variablesInput: myVars.#variablesInput}
 
 "windowsDashboard": v1.#Dashboard & {
 	metadata: {
@@ -19,9 +16,9 @@ import (
 	}
 	spec: {
 		panels: {
-			"cpuUsage": myPanels.#cpuUsage & {#metric: "wmi_cpu"},
-			"ramUsage": myPanels.#ramUsage & {#metric: "wmi_ram"},
+			"cpuUsage": myPanels.#cpuUsage & { #metric: "wmi_cpu", #filter: myVars.#fullMatcher },
+			"ramUsage": myPanels.#ramUsage & { #metric: "wmi_ram", #filter: myVars.#fullMatcher },
 		}
-		variables: #myVarsBuilder.#variables
+		variables: myVars.#builder.#variables
 	}
 }

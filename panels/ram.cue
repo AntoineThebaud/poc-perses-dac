@@ -8,6 +8,7 @@ import (
 
 #ramUsage: v1.#Panel & {
 	#metric: string
+	#filter: string
 
 	spec: {
 		display: name: "My Timeseries Panel",
@@ -16,7 +17,7 @@ import (
 			{
 				kind: "TimeSeriesQuery" // TODO lacking validation here
 				spec: plugin: promQuery & {
-					spec: query: "\(#metric){node=\"$node\",job=\"system\"}"
+					spec: query: "\(#metric){\(#filter)}"
 				}
 			}
 		]
