@@ -4,6 +4,16 @@
 
 package v1
 
-#FolderSpec: _
+// /!\ manual override of the default generated def
+#FolderSpec: {
+	kind:  #Kind            @go(Kind)
+	name:  string           @go(Name)
+	spec?: [...#FolderSpec] @go(Spec,[]FolderSpec)
+}
 
-#Folder: _
+// /!\ manual override of the default generated def
+#Folder: {
+	kind:     #Kind            @go(Kind)
+	metadata: #ProjectMetadata @go(Metadata)
+	spec:     [...#FolderSpec] @go(Spec,[]FolderSpec)
+}

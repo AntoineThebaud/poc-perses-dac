@@ -4,9 +4,13 @@
 
 package v1
 
-#VariableInterface: _
+import "github.com/perses/perses/pkg/model/api/v1/variable"
 
-#VariableSpec: _
+// /!\ manual override of the default generated def
+#VariableSpec: {
+	kind: variable.#Kind @go(Kind)
+	spec: _              @go(Spec)
+}
 
 // GlobalVariable is a global variable that be used everywhere regardless the project.
 #GlobalVariable: {

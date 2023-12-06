@@ -4,9 +4,16 @@
 
 package v1
 
-import "github.com/perses/perses/pkg/model/api/v1/common"
+import (
+	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/perses/perses/pkg/model/api/v1/dashboard"
+)
 
-#PanelDisplay: _
+// /!\ manual override of the default generated def
+#PanelDisplay: {
+	name:         string @go(Name)
+	description?: string @go(Description)
+}
 
 #PanelSpec: {
 	display: #PanelDisplay  @go(Display)
@@ -28,6 +35,20 @@ import "github.com/perses/perses/pkg/model/api/v1/common"
 	plugin: common.#Plugin @go(Plugin)
 }
 
-#DashboardSpec: _
+// /!\ manual override of the default generated def
+#DashboardSpec: {
+	display?:         common.#Display           @go(Display)
+	datasources?:     [string]: #DatasourceSpec @go(Datasources)
+	variables?:       [...dashboard.#Variable]  @go(Variables,[]Variable)
+	panels:           [string]: #Panel          @go(Panels)
+	layouts:          [...dashboard.#Layout]    @go(Layouts,[]Layout)
+	duration:         _                         @go(Duration)        // TODO def should come from github.com/prometheus/common/model 
+	refreshInterval?: _                         @go(RefreshInterval) // TODO def should come from github.com/prometheus/common/model
+}
 
-#Dashboard: _
+// /!\ manual override of the default generated def
+#Dashboard: {
+	kind:     #Kind            @go(Kind)
+	metadata: #ProjectMetadata @go(Metadata)
+	spec:     #DashboardSpec   @go(Spec)
+}

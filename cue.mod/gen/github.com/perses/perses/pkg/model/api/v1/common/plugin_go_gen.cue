@@ -4,4 +4,8 @@
 
 package common
 
-#Plugin: _
+// /!\ manual override of the default generated def
+#Plugin: {
+	kind: string @go(Kind)
+	spec: _      @go(Spec)
+}

@@ -17,11 +17,21 @@ import "github.com/perses/perses/pkg/model/api/v1/common"
 	plugin: common.#Plugin @go(Plugin)
 }
 
+// /!\ manual override of the default generated def
 // GlobalDatasource is the struct representing the datasource shared to everybody.
 // Any Dashboard can reference it.
-#GlobalDatasource: _
+#GlobalDatasource: {
+	kind:     #Kind           @go(Kind)
+	metadata: #Metadata       @go(Metadata)
+	spec:     #DatasourceSpec @go(Spec)
+}
 
+// /!\ manual override of the default generated def
 // Datasource will be the datasource you can define in your project/namespace
 // This is a resource that won't be shared across projects.
 // A Dashboard can use it only if it is in the same project.
-#Datasource: _
+#Datasource: {
+	kind:     #Kind            @go(Kind)
+	metadata: #ProjectMetadata @go(Metadata)
+	spec:     #DatasourceSpec  @go(Spec)
+}

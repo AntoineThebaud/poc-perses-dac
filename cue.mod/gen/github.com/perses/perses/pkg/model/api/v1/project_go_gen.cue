@@ -7,4 +7,9 @@ package v1
 #ProjectSpec: {
 }
 
-#Project: _
+// /!\ manual override of the default generated def
+#Project: {
+	kind:     #Kind        @go(Kind)
+	metadata: #Metadata    @go(Metadata)
+	spec?:    #ProjectSpec @go(Spec)
+}

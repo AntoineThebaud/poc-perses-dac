@@ -4,10 +4,8 @@
 
 package v1
 
-#Kind: _ // #enumKind
-
-#enumKind:
-	#KindDashboard |
+// /!\ manual override of the default generated def
+#Kind: #KindDashboard |
 	#KindDatasource |
 	#KindFolder |
 	#KindGlobalDatasource |
@@ -17,12 +15,12 @@ package v1
 	#KindSecret |
 	#KindVariable
 
-#KindDashboard:        #Kind & "Dashboard"
-#KindDatasource:       #Kind & "Datasource"
-#KindFolder:           #Kind & "Folder"
-#KindGlobalDatasource: #Kind & "GlobalDatasource"
-#KindGlobalVariable:   #Kind & "GlobalVariable"
-#KindGlobalSecret:     #Kind & "GlobalSecret"
-#KindProject:          #Kind & "Project"
-#KindSecret:           #Kind & "Secret"
-#KindVariable:         #Kind & "Variable"
+#KindDashboard:        "Dashboard"
+#KindDatasource:       "Datasource"
+#KindFolder:           "Folder"
+#KindGlobalDatasource: "GlobalDatasource"
+#KindGlobalVariable:   "GlobalVariable"
+#KindGlobalSecret:     "GlobalSecret"
+#KindProject:          "Project"
+#KindSecret:           "Secret"
+#KindVariable:         "Variable"

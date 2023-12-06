@@ -4,5 +4,5 @@
 
 package common
 
-// Regexp encapsulates a regexp.Regexp and makes it JSON/YAML marshalable.
-#Regexp: _
+// /!\ manual override of the default generated def
+#Regexp: string
