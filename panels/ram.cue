@@ -14,8 +14,9 @@ import (
 	#clauseLabels: [...string] | *[]
 	#builtClause: string | *""
 	if #clause != "" {
-		#builtClauseLabels: strings.Join(#clauseLabels, ",")
-		#builtClause: "\(#clause) (\(#builtClauseLabels))" 
+		#builtClause: """
+		\(#clause) (\(strings.Join(#clauseLabels, ",")))
+		"""
 	}
 
 	#metric: [ // switch

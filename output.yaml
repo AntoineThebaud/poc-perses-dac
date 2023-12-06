@@ -149,6 +149,6 @@ windowsDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: sum without (country) (wmi_ram{country="$country",region="$region",city="$city"})
+                    query: sum without (country, region) (wmi_ram{country="$country",region="$region",city="$city"})
     layouts: []
     duration: 1h
