@@ -22,7 +22,8 @@ import (
 }
 
 #Panel: {
-	kind: string     @go(Kind)
+	// /!\ manual override of the default generated def
+	kind: "Panel"     @go(Kind)
 	spec: #PanelSpec @go(Spec)
 }
 
@@ -42,13 +43,14 @@ import (
 	variables?:       [...dashboard.#Variable]  @go(Variables,[]Variable)
 	panels:           [string]: #Panel          @go(Panels)
 	layouts:          [...dashboard.#Layout]    @go(Layouts,[]Layout)
-	duration:         _                         @go(Duration)        // TODO def should come from github.com/prometheus/common/model 
+	duration:         _ | *"1h"                 @go(Duration)        // TODO def should come from github.com/prometheus/common/model 
 	refreshInterval?: _                         @go(RefreshInterval) // TODO def should come from github.com/prometheus/common/model
 }
 
 // /!\ manual override of the default generated def
 #Dashboard: {
-	kind:     #Kind            @go(Kind)
+	// /!\ manual override of the default generated def
+	kind:     #KindDashboard   @go(Kind)
 	metadata: #ProjectMetadata @go(Metadata)
 	spec:     #DashboardSpec   @go(Spec)
 }

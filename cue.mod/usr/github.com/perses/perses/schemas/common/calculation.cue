@@ -13,4 +13,5 @@
 
 package common
 
-#calculation: "first" | "last" | "first-number" | "last-number" | "mean" | "sum" | "min" | "max"
+// /!\ manual override of the default generated def
+#calculation: "first" | *"last" | "first-number" | "last-number" | "mean" | "sum" | "min" | "max"
