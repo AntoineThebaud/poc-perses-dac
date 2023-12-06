@@ -50,7 +50,7 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- extract "filter builder" in an external lib + use it in the panels
+- use the "variables builder" also to build the label matchers of the panels queries
 - layout helper
 - reusable options
 - complexify variables:
