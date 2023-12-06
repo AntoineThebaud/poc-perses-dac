@@ -24,7 +24,7 @@ import (
 			{
 				kind: "TimeSeriesQuery" // TODO lacking validation here
 				spec: plugin: promQuery & {
-					spec: query: "sum \(this.#builtClause) (\(#metric){\(#filter)})"
+					spec: query: "sum \(this.#aggr) (\(#metric){\(#filter)})"
 				}
 			}
 		]

@@ -12,9 +12,9 @@ v1.#Panel & {
     #clause: "by" | "without" | *""
     #clauseLabels: [...string] | *[]
 
-    #builtClause: string | *""
+    #aggr: string | *""
     if #clause != "" {
-        #builtClause: """
+        #aggr: """
         \(#clause) (\(strings.Join(#clauseLabels, ",")))
         """
     }
