@@ -7,8 +7,15 @@ import (
 )
 
 #ramUsage: v1.#Panel & {
-	#metric: string
+	#os: *"linux" | "windows"
 	#filter: string
+
+	#metric: [ // switch
+		if #os == "windows" {
+			"wmi_ram"
+		},
+		"node_memory_usage"
+	][0]
 
 	spec: {
 		display: name: "My Timeseries Panel",

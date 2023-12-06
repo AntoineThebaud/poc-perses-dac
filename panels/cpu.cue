@@ -7,8 +7,15 @@ import (
 )
 
 #cpuUsage: v1.#Panel & {
-	#metric: string
+	#os: *"linux" | "windows"
 	#filter: string
+
+	#metric: [ // switch
+		if #os == "windows" {
+			"wmi_cpu"
+		},
+		"node_cpu_usage"
+	][0]
 
 	spec: {
 		display: name: "CPU Usage",

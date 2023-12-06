@@ -16,8 +16,8 @@ import (
 	}
 	spec: {
 		panels: {
-			"cpuUsage": myPanels.#cpuUsage & { #metric: "wmi_cpu", #filter: myVars.#fullMatcher },
-			"ramUsage": myPanels.#ramUsage & { #metric: "wmi_ram", #filter: myVars.#fullMatcher },
+			"cpuUsage": myPanels.#cpuUsage & { #os: "windows", #filter: myVars.#fullMatcher },
+			"ramUsage": myPanels.#ramUsage & { #os: "windows", #filter: myVars.#fullMatcher },
 		}
 		variables: myVars.#builder.#variables
 	}

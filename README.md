@@ -50,7 +50,6 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- change the panels to take a type (linux/win) parameter instead of metric
 - layout helper
 - reusable options
 - complexify variables:
