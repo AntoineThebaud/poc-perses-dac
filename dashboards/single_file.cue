@@ -12,35 +12,10 @@ import (
 )
 
 #myVarsBuilder: varsBuilder & { #input: [
-	{
-		kind: "PrometheusPromQLVariable"
-		datasource: name: "promDemo"
-		metric: "thanos_build_info"
-		label: "stack"
-	},
-	{
-		kind: "PrometheusPromQLVariable"
-		datasource: name: "promDemo"
-		metric: "kube_namespace_labels"
-		label: "namespace"
-		allowMultiple: true
-	},
-	{
-		kind: "PrometheusPromQLVariable"
-		datasource: name: "promDemo"
-		metric: "kube_pod_info"
-		label: "pod"
-		allowAllValue: true
-		allowMultiple: true
-	},
-	{
-		kind: "PrometheusPromQLVariable"
-		datasource: name: "promDemo"
-		metric: "kube_pod_container_info"
-		label: "container"
-		allowAllValue: true
-		allowMultiple: true
-	}
+	{ kind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "thanos_build_info", label: "stack" },
+	{ kind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_namespace_labels", label: "namespace", allowMultiple: true },
+	{ kind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_info", label: "pod", allowAllValue: true, allowMultiple: true },
+	{ kind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_container_info", label: "container", allowAllValue: true, allowMultiple: true	}
 ]}
 
 #myPanels: {

@@ -13,7 +13,7 @@ import (
 // expected user inputs
 #input: [...{
     kind: string
-    datasource: name: string
+    datasourceName: string
     metric: string
     label: string
     allowAllValue: bool | *false
@@ -40,7 +40,7 @@ import (
 		plugin: promQLVar & {
 			kind: var.kind
 			spec: {
-				datasource: name: var.datasource.name
+				datasource: name: var.datasourceName
 				expr: #exprs[id]
 				labelName: var.label
 			}

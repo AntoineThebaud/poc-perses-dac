@@ -9,27 +9,9 @@ import (
 #metric: "up"
 
 #myInput: varsBuilder.#input & [
-	{
-		kind: #kind
-		datasource: name: #ds
-		metric: #metric
-		label: "country"
-	},
-	{
-		kind: #kind
-		datasource: name: #ds
-		metric: #metric
-		label: "region"
-		allowMultiple: true
-	},
-	{
-		kind: #kind
-		datasource: name: #ds
-		metric: #metric
-		label: "city"
-		allowAllValue: true
-		allowMultiple: true
-	}
+	{ kind: #kind, datasourceName: #ds, metric: #metric, label: "country" },
+	{ kind: #kind, datasourceName: #ds, metric: #metric, label: "region", allowMultiple: true },
+	{ kind: #kind, datasourceName: #ds, metric: #metric, label: "city", allowAllValue: true, allowMultiple: true }
 ]
 
 varsBuilder & { #input: #myInput }
