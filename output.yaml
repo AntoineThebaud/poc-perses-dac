@@ -73,7 +73,24 @@ linuxDashboard:
                   kind: PrometheusTimeSeriesQuery
                   spec:
                     query: sum  (node_memory_usage{country="$country",region="$region",city="$city"})
-    layouts: []
+    layouts:
+      - kind: Grid
+        spec:
+          display:
+            title: My panel group
+          items:
+            - x: 0
+              "y": 0
+              width: 24
+              height: 6
+              content:
+                $ref: '#/spec/panels/cpuUsage'
+            - x: 0
+              "y": 6
+              width: 24
+              height: 6
+              content:
+                $ref: '#/spec/panels/ramUsage'
     duration: 1h
 windowsDashboard:
   kind: Dashboard
@@ -150,5 +167,22 @@ windowsDashboard:
                   kind: PrometheusTimeSeriesQuery
                   spec:
                     query: sum without (country, region) (wmi_ram{country="$country",region="$region",city="$city"})
-    layouts: []
+    layouts:
+      - kind: Grid
+        spec:
+          display:
+            title: My panel group
+          items:
+            - x: 0
+              "y": 0
+              width: 8
+              height: 12
+              content:
+                $ref: '#/spec/panels/cpuUsage'
+            - x: 8
+              "y": 0
+              width: 8
+              height: 12
+              content:
+                $ref: '#/spec/panels/ramUsage'
     duration: 1h

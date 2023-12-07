@@ -4,10 +4,15 @@ package pkg
 
 import (
 	"github.com/perses/perses/pkg/model/api/v1"
-	//"github.com/perses/perses/schemas/common"
 	myPanels "github.com/AntoineThebaud/poc-perses-dac/panels"
 	myVars "github.com/AntoineThebaud/poc-perses-dac/variables"
+	"github.com/perses/perses/dac:panelGroupBuilder"
 )
+
+#linuxPanels: {
+	"cpuUsage": myPanels.#cpuUsage & { #filter: myVars.#fullMatcher, #clause: "by", #clauseLabels: ["city"] },
+	"ramUsage": myPanels.#ramUsage & { #filter: myVars.#fullMatcher },
+}
 
 "linuxDashboard": v1.#Dashboard & {
 	metadata: {
@@ -15,10 +20,10 @@ import (
 		project: "My project"
 	}
 	spec: {
-		panels: {
-			"cpuUsage": myPanels.#cpuUsage & { #filter: myVars.#fullMatcher, #clause: "by", #clauseLabels: ["city"] },
-			"ramUsage": myPanels.#ramUsage & { #filter: myVars.#fullMatcher },
-		}
+		panels: #linuxPanels
 		variables: myVars.#variables
+		layouts: [
+			panelGroupBuilder & { #panels: #linuxPanels, #title: "My panel group", #cols: 1 }
+		]
 	}
 }

@@ -28,8 +28,9 @@ import "github.com/perses/perses/pkg/model/api/v1/common"
 
 #LayoutKind: "Grid"
 
-#LayoutSpec: {
-}
+
+// /!\ manual override of the default generated def
+#LayoutSpec: #GridLayoutSpec
 
 #Layout: {
 	kind: #LayoutKind @go(Kind)
