@@ -8,7 +8,6 @@ import (
 
 #ramUsage: this=panelBuilder & {
 	#os: *"linux" | "windows"
-	#filter: string
 
 	#metric: [ // switch
 		if #os == "windows" {
@@ -24,7 +23,7 @@ import (
 			{
 				kind: "TimeSeriesQuery" // TODO lacking validation here
 				spec: plugin: promQuery & {
-					spec: query: "sum \(this.#aggr) (\(#metric){\(#filter)})"
+					spec: query: "sum \(this.#aggr) (\(#metric){\(this.#filter)})"
 				}
 			}
 		]

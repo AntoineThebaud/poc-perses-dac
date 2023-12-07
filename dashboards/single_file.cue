@@ -31,7 +31,7 @@ import (
                 {
                     kind: "TimeSeriesQuery"
                     spec: plugin: promQuery & {
-                        spec: query: "max \(this.#aggr) (container_memory_rss{\(#filter)})"
+                        spec: query: "max \(this.#aggr) (container_memory_rss{\(this.#filter)})"
                     }
                 }
             ]
@@ -46,7 +46,7 @@ import (
                 {
                     kind: "TimeSeriesQuery"
                     spec: plugin: promQuery & {
-                        spec: query: "sum \(this.#aggr) (container_cpu_usage_seconds{\(#filter)})"
+                        spec: query: "sum \(this.#aggr) (container_cpu_usage_seconds{\(this.#filter)})"
                     }
                 }
             ]

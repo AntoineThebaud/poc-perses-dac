@@ -21,4 +21,6 @@ if #clause != "" {
     """
 }
 
+#filter: string
+
 v1.#Panel

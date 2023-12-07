@@ -50,7 +50,6 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- try to get rid of "#filter: string" mandatory in panel declaration
 - add datasource selector datamodel?
 - links between dashboards
 - reusable options
