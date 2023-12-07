@@ -50,7 +50,6 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- add datasource selector datamodel?
 - links between dashboards
 - reusable options
 - complexify variables:

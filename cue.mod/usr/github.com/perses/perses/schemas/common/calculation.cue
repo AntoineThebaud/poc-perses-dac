@@ -13,5 +13,5 @@
 
 package common
 
-// /!\ manual override of the default generated def
+// /!\ manual modif made, to be backported
 #calculation: "first" | *"last" | "first-number" | "last-number" | "mean" | "sum" | "min" | "max"
