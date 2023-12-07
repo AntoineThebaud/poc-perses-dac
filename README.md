@@ -53,5 +53,5 @@ This file should be regenerated after any change done to the CUE defs, in order 
 - links between dashboards
 - reusable options
 - complexify variables:
-  - manage different types of variables (constants, other plugins etc.)
+  - decouple the generic varsBuilder from prometheus & provide prometheus helper as "plugin lib"
   - manage the case where a variable should not "chain" to previous ones

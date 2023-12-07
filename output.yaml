@@ -31,6 +31,11 @@ linuxDashboard:
                 name: promDemo
               expr: group by (region) (up{country="$country"})
               labelName: region
+      - kind: TextVariable
+        spec:
+          name: size
+          value: large
+          constant: true
       - kind: ListVariable
         spec:
           name: city
@@ -42,7 +47,7 @@ linuxDashboard:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (city) (up{country="$country",region="$region"})
+              expr: group by (city) (up{country="$country",region="$region",size="$size"})
               labelName: city
     panels:
       cpuUsage:
@@ -60,7 +65,7 @@ linuxDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: sum by (city) (node_cpu_usage{country="$country",region="$region",city="$city"})
+                    query: sum by (city) (node_cpu_usage{country="$country",region="$region",size="$size",city="$city"})
       ramUsage:
         kind: Panel
         spec:
@@ -75,7 +80,7 @@ linuxDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: sum  (node_memory_usage{country="$country",region="$region",city="$city"})
+                    query: sum  (node_memory_usage{country="$country",region="$region",size="$size",city="$city"})
     layouts:
       - kind: Grid
         spec:
@@ -115,6 +120,16 @@ singleFileDashboard:
                 name: promDemo
               expr: group by (stack) (thanos_build_info{})
               labelName: stack
+      - kind: TextVariable
+        spec:
+          name: prometheus
+          value: platform
+          constant: true
+      - kind: TextVariable
+        spec:
+          name: prometheus_namespace
+          value: observability
+          constant: true
       - kind: ListVariable
         spec:
           name: namespace
@@ -126,7 +141,7 @@ singleFileDashboard:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (namespace) (kube_namespace_labels{stack="$stack"})
+              expr: group by (namespace) (kube_namespace_labels{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace"})
               labelName: namespace
       - kind: ListVariable
         spec:
@@ -139,7 +154,7 @@ singleFileDashboard:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (pod) (kube_pod_info{stack="$stack",namespace="$namespace"})
+              expr: group by (pod) (kube_pod_info{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace"})
               labelName: pod
       - kind: ListVariable
         spec:
@@ -152,7 +167,7 @@ singleFileDashboard:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (container) (kube_pod_container_info{stack="$stack",namespace="$namespace",pod="$pod"})
+              expr: group by (container) (kube_pod_container_info{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace",pod="$pod"})
               labelName: container
     panels:
       memory:
@@ -169,7 +184,7 @@ singleFileDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: max by (container) (container_memory_rss{stack="$stack",namespace="$namespace",pod="$pod",container="$container"})
+                    query: max by (container) (container_memory_rss{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace",pod="$pod",container="$container"})
       cpu:
         kind: Panel
         spec:
@@ -184,7 +199,7 @@ singleFileDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: sum  (container_cpu_usage_seconds{stack="$stack",namespace="$namespace",pod="$pod",container="$container"})
+                    query: sum  (container_cpu_usage_seconds{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace",pod="$pod",container="$container"})
     layouts:
       - kind: Grid
         spec:
@@ -237,6 +252,11 @@ windowsDashboard:
                 name: promDemo
               expr: group by (region) (up{country="$country"})
               labelName: region
+      - kind: TextVariable
+        spec:
+          name: size
+          value: large
+          constant: true
       - kind: ListVariable
         spec:
           name: city
@@ -248,7 +268,7 @@ windowsDashboard:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (city) (up{country="$country",region="$region"})
+              expr: group by (city) (up{country="$country",region="$region",size="$size"})
               labelName: city
     panels:
       cpuUsage:
@@ -266,7 +286,7 @@ windowsDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: sum  (wmi_cpu{country="$country",region="$region",city="$city"})
+                    query: sum  (wmi_cpu{country="$country",region="$region",size="$size",city="$city"})
       ramUsage:
         kind: Panel
         spec:
@@ -281,7 +301,7 @@ windowsDashboard:
                 plugin:
                   kind: PrometheusTimeSeriesQuery
                   spec:
-                    query: sum without (country, region) (wmi_ram{country="$country",region="$region",city="$city"})
+                    query: sum without (country, region) (wmi_ram{country="$country",region="$region",size="$size",city="$city"})
     layouts:
       - kind: Grid
         spec:

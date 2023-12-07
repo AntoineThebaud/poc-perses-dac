@@ -6,18 +6,25 @@ package varsBuilder
 import (
 	"strings"
 	v1Dashboard "github.com/perses/perses/pkg/model/api/v1/dashboard"
-	v1Variable "github.com/perses/perses/pkg/model/api/v1/variable"
+	//v1Variable "github.com/perses/perses/pkg/model/api/v1/variable"
 	promQLVar "github.com/perses/perses/schemas/variables/prometheus-promql:model"
 )
 
-// expected user inputs
+// expected user input
 #input: [...{
-    kind: string
-    datasourceName: string
-    metric: string
-    label: string
-    allowAllValue: bool | *false
-    allowMultiple: bool | *false
+	kind: "ListVariable"
+	pluginKind: string
+	datasourceName: string
+	metric: string
+	label: string
+	allowAllValue: bool | *false
+	allowMultiple: bool | *false
+} | {
+	kind: "TextVariable"
+	label: string
+	metric: "placeholder"
+	value: string
+	constant: bool | *false
 }]
 
 // outputs
@@ -32,18 +39,29 @@ import (
 }]
 
 #variables: [...v1Dashboard.#Variable] & [ for id, var in #input {
-	kind: v1Variable.#KindList
-	spec: v1Dashboard.#ListVariableSpec & {
-		name: var.label
-		allowAllValue: var.allowAllValue
-		allowMultiple: var.allowMultiple
-		plugin: promQLVar & {
-			kind: var.kind
-			spec: {
-				datasource: name: var.datasourceName
-				expr: #exprs[id]
-				labelName: var.label
+	kind: var.kind
+	spec: [ // switch
+		if var.kind == "ListVariable" {
+			v1Dashboard.#ListVariableSpec & {
+				name: var.label
+				allowAllValue: var.allowAllValue
+				allowMultiple: var.allowMultiple
+				plugin: promQLVar & {
+					kind: var.pluginKind
+					spec: {
+						datasource: name: var.datasourceName
+						expr: #exprs[id]
+						labelName: var.label
+					}
+				}
 			}
-		}
-	}
+		},
+		if var.kind == "TextVariable" {
+			v1Dashboard.#TextVariableSpec & {
+				name: var.label
+				value: var.value
+				constant: var.constant
+			}
+		},
+	][0]
 }]
