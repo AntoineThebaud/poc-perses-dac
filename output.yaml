@@ -14,6 +14,7 @@ linuxDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (country) (up{})
               labelName: country
@@ -26,6 +27,7 @@ linuxDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (region) (up{country="$country"})
               labelName: region
@@ -38,6 +40,7 @@ linuxDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (city) (up{country="$country",region="$region"})
               labelName: city
@@ -108,6 +111,7 @@ singleFileDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (stack) (thanos_build_info{})
               labelName: stack
@@ -120,6 +124,7 @@ singleFileDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (namespace) (kube_namespace_labels{stack="$stack"})
               labelName: namespace
@@ -132,6 +137,7 @@ singleFileDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (pod) (kube_pod_info{stack="$stack",namespace="$namespace"})
               labelName: pod
@@ -144,6 +150,7 @@ singleFileDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (container) (kube_pod_container_info{stack="$stack",namespace="$namespace",pod="$pod"})
               labelName: container
@@ -213,6 +220,7 @@ windowsDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (country) (up{})
               labelName: country
@@ -225,6 +233,7 @@ windowsDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (region) (up{country="$country"})
               labelName: region
@@ -237,6 +246,7 @@ windowsDashboard:
             kind: PrometheusPromQLVariable
             spec:
               datasource:
+                kind: PrometheusDatasource
                 name: promDemo
               expr: group by (city) (up{country="$country",region="$region"})
               labelName: city

@@ -7,6 +7,7 @@ import (
 	"strings"
 	v1Dashboard "github.com/perses/perses/pkg/model/api/v1/dashboard"
 	v1Variable "github.com/perses/perses/pkg/model/api/v1/variable"
+	promQLVar "github.com/perses/perses/schemas/variables/prometheus-promql:model"
 )
 
 // expected user inputs
@@ -36,7 +37,7 @@ import (
 		name: var.label
 		allowAllValue: var.allowAllValue
 		allowMultiple: var.allowMultiple
-		plugin: {
+		plugin: promQLVar & {
 			kind: var.kind
 			spec: {
 				datasource: name: var.datasource.name

@@ -50,7 +50,6 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- add var plugin schema constraint in varsBuilder l39
 - varBuilder change " datasource: name: " to datasourceName
 - try to get rid of "#filter: string" mandatory in panel declaration
 - add datasource selector datamodel?
