@@ -9,13 +9,13 @@ import (
 	v1Dashboard "github.com/perses/perses/pkg/model/api/v1/dashboard"
 )
 
-// user inputs expected
+// expected user inputs
 #panels: [string]: v1.#Panel
 #title: string
 #cols: >0 & <=#gridCols
 #height: number | *6
 
-// compute magic
+// intermediary compute magic
 #gridCols: 24
 #panelsAsList: [for k, p in #panels {p, name: k}]
 #width: math.Trunc(#gridCols / #cols)

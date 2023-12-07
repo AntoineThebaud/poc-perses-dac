@@ -9,6 +9,7 @@ import (
 	v1Variable "github.com/perses/perses/pkg/model/api/v1/variable"
 )
 
+// expected user inputs
 #input: [...{
     kind: string
     datasource: name: string
@@ -18,6 +19,7 @@ import (
     allowMultiple: bool | *false
 }]
 
+// outputs
 #matchers: [ for k, _ in #input {
 	strings.Join([for k2, var in #input if k2 < k {"\(var.label)=\"$\(var.label)\""}], ",")
 }]
