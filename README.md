@@ -50,8 +50,8 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
+- complexify variables:
+  - refactor prometheusVarsBuilder: simplify usage e.g name should default to label in lib + refactor ugly stuff like vars.variables
+  - manage the case where a variable should not "chain" to previous ones
 - links between dashboards
 - reusable options
-- complexify variables:
-  - decouple the generic varsBuilder from prometheus & provide prometheus helper as "plugin lib"
-  - manage the case where a variable should not "chain" to previous ones

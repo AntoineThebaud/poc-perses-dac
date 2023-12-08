@@ -6,23 +6,23 @@ import (
 	"github.com/perses/perses/pkg/model/api/v1"
 	"github.com/perses/perses/dac:panelBuilder"
 	"github.com/perses/perses/dac:panelGroupBuilder"
-	"github.com/perses/perses/dac:varsBuilder"
+	"github.com/perses/perses/dac:prometheusVarsBuilder"
 	timeseriesChart "github.com/perses/perses/schemas/panels/time-series:model"
 	promQuery "github.com/perses/perses/schemas/queries/prometheus:model"
 )
 
-#myVarsBuilder: varsBuilder & { #input: [
-	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "thanos_build_info", label: "stack" },
-	{ kind: "TextVariable", label: "prometheus", value: "platform", constant: true },
-	{ kind: "TextVariable", label: "prometheus_namespace", value: "observability", constant: true },
-	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_namespace_labels", label: "namespace", allowMultiple: true },
-	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_info", label: "pod", allowAllValue: true, allowMultiple: true },
-	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_container_info", label: "container", allowAllValue: true, allowMultiple: true }
+#myVarsBuilder: prometheusVarsBuilder & { input: [
+	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "thanos_build_info", label: "stack" },
+	{ kind: "TextVariable", name: label, label: "prometheus", value: "platform", constant: true },
+	{ kind: "TextVariable", name: label, label: "prometheus_namespace", value: "observability", constant: true },
+	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "kube_namespace_labels", label: "namespace", allowMultiple: true },
+	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "kube_pod_info", label: "pod", allowAllValue: true, allowMultiple: true },
+	{ pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "kube_pod_container_info", label: "container", allowAllValue: true, allowMultiple: true }
 ]}
 
 #myPanels: {
 	"memory": this=panelBuilder & {
-		#filter: #myVarsBuilder.#fullMatcher
+		#filter: #myVarsBuilder.fullMatcher
 		#clause: "by"
 		#clauseLabels: ["container"]
 
@@ -40,7 +40,7 @@ import (
 		}
 	},
 	"cpu": this=panelBuilder & {
-		#filter: #myVarsBuilder.#fullMatcher
+		#filter: #myVarsBuilder.fullMatcher
 		spec: {
 			display: name: "Container CPU",
 			plugin: timeseriesChart
@@ -63,7 +63,7 @@ import (
 	}
 	spec: {
 		panels: #myPanels
-		variables: #myVarsBuilder.#variables
+		variables: #myVarsBuilder.variables
 		layouts: [
 			panelGroupBuilder & { #panels: #myPanels, #title: "Resource usage", #cols: 3 }
 		]

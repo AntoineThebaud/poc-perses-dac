@@ -10,8 +10,8 @@ import (
 )
 
 #linuxPanels: {
-	"cpuUsage": myPanels.#cpuUsage & { #filter: myVars.#fullMatcher, #clause: "by", #clauseLabels: ["city"] },
-	"ramUsage": myPanels.#ramUsage & { #filter: myVars.#fullMatcher },
+	"cpuUsage": myPanels.#cpuUsage & { #filter: myVars.fullMatcher, #clause: "by", #clauseLabels: ["city"] },
+	"ramUsage": myPanels.#ramUsage & { #filter: myVars.fullMatcher },
 }
 
 "linuxDashboard": v1.#Dashboard & {
@@ -21,7 +21,7 @@ import (
 	}
 	spec: {
 		panels: #linuxPanels
-		variables: myVars.#variables
+		variables: myVars.variables
 		layouts: [
 			panelGroupBuilder & { #panels: #linuxPanels, #title: "My panel group", #cols: 1 }
 		]
