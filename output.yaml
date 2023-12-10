@@ -109,7 +109,7 @@ singleFileDashboard:
     variables:
       - kind: ListVariable
         spec:
-          name: stack
+          name: PaaS
           allowAllValue: false
           allowMultiple: false
           plugin:

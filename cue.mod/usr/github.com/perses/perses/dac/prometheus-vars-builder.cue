@@ -13,16 +13,16 @@ import (
 input: [...#listInputItem | #textInputItem]
 #listInputItem: {
 	varsBuilder.#listInputItem
+    name: string | *label // map name to label by default
 	metric: string
 	label: string
 }
 #textInputItem: {
 	varsBuilder.#textInputItem
+    name: string | *label // map name to label by default
 	metric: "placeholder" // not-used value, just to have loop working
 	label: string
 }
-
-tempAlias: input
 
 // outputs
 matchers: [ for k, _ in input {
@@ -35,11 +35,13 @@ exprs: [for k, v in input {
 	"group by (" + v.label + ") (" + v.metric + "{" + matchers[k] + "})"
 }]
 
-variables: {varsBuilder & { input: tempAlias }}.variables & [ for id, var in input {
+let alias = input
+variables: {varsBuilder & { input: alias }}.variables & [ for id, var in input {
     spec: [ // switch
         if var.kind == "ListVariable" {
             plugin: promQLVar & {
                 spec: {
+                    datasource: kind: "PrometheusDatasource"
                     expr: exprs[id]
                     labelName: var.label
                 }

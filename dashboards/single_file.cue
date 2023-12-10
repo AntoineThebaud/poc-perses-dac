@@ -12,12 +12,12 @@ import (
 )
 
 #myVarsBuilder: prometheusVarsBuilder & {input: [
-	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "thanos_build_info", label: "stack"},
-	{kind: "TextVariable", name: label, label: "prometheus", value: "platform", constant: true},
-	{kind: "TextVariable", name: label, label: "prometheus_namespace", value: "observability", constant: true},
-	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "kube_namespace_labels", label: "namespace", allowMultiple: true},
-	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "kube_pod_info", label: "pod", allowAllValue: true, allowMultiple: true},
-	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: label, metric: "kube_pod_container_info", label: "container", allowAllValue: true, allowMultiple: true},
+	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: "PaaS", metric: "thanos_build_info", label: "stack"},
+	{kind: "TextVariable", label: "prometheus", value: "platform", constant: true},
+	{kind: "TextVariable", label: "prometheus_namespace", value: "observability", constant: true},
+	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_namespace_labels", label: "namespace", allowMultiple: true},
+	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_info", label: "pod", allowAllValue: true, allowMultiple: true},
+	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_container_info", label: "container", allowAllValue: true, allowMultiple: true},
 ]}
 
 #myPanels: {

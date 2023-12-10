@@ -51,7 +51,7 @@ This file should be regenerated after any change done to the CUE defs, in order 
 
 # TODO
 - complexify variables:
-  - refactor prometheusVarsBuilder: simplify usage e.g name should default to label in lib + refactor ugly stuff like vars.variables
+  - prometheusVarsBuilder: support properly all the kinds, not just PrometheusPromQLVariable
   - manage the case where a variable should not "chain" to previous ones
 - links between dashboards
 - reusable options
