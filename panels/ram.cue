@@ -9,15 +9,15 @@ import (
 #ramUsage: this=panelBuilder & {
 	#os: *"linux" | "windows"
 
-	#metric: [ // switch
-		if #os == "windows" {
+	#metric: [// switch
+			if #os == "windows" {
 			"wmi_ram"
 		},
-		"node_memory_usage"
+		"node_memory_usage",
 	][0]
 
 	spec: {
-		display: name: "My Timeseries Panel",
+		display: name: "My Timeseries Panel"
 		plugin: timeseriesChart
 		queries: [
 			{
@@ -25,7 +25,7 @@ import (
 				spec: plugin: promQuery & {
 					spec: query: "sum \(this.#aggr) (\(#metric){\(this.#filter)})"
 				}
-			}
+			},
 		]
 	}
 }

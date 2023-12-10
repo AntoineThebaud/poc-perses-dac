@@ -10,20 +10,20 @@ import (
 )
 
 #winPanels: {
-	"cpuUsage": myPanels.#cpuUsage & { #os: "windows", #filter: myVars.fullMatcher },
-	"ramUsage": myPanels.#ramUsage & { #os: "windows", #filter: myVars.fullMatcher, #clause: "without", #clauseLabels: ["country, region"] },
+	"cpuUsage": myPanels.#cpuUsage & {#os: "windows", #filter: myVars.fullMatcher}
+	"ramUsage": myPanels.#ramUsage & {#os: "windows", #filter: myVars.fullMatcher, #clause: "without", #clauseLabels: ["country, region"]}
 }
 
 "windowsDashboard": v1.#Dashboard & {
 	metadata: {
-		name: "My Windows Dashboard"
+		name:    "My Windows Dashboard"
 		project: "My project"
 	}
 	spec: {
-		panels: #winPanels
+		panels:    #winPanels
 		variables: myVars.variables
 		layouts: [
-			panelGroupBuilder & { #panels: #winPanels, #title: "My panel group", #cols: 3, #height: 12 }
+			panelGroupBuilder & {#panels: #winPanels, #title: "My panel group", #cols: 3, #height: 12},
 		]
 	}
 }

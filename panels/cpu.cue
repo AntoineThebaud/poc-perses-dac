@@ -9,15 +9,15 @@ import (
 #cpuUsage: this=panelBuilder & {
 	#os: *"linux" | "windows"
 
-	#metric: [ // switch
-		if #os == "windows" {
+	#metric: [// switch
+			if #os == "windows" {
 			"wmi_cpu"
 		},
-		"node_cpu_usage"
+		"node_cpu_usage",
 	][0]
 
 	spec: {
-		display: name: "CPU Usage",
+		display: name: "CPU Usage"
 		plugin: barChart
 		queries: [
 			{
@@ -25,7 +25,7 @@ import (
 				spec: plugin: promQuery & {
 					spec: query: "sum \(this.#aggr) (\(#metric){\(this.#filter)})"
 				}
-			}
+			},
 		]
 	}
 }
