@@ -6,6 +6,7 @@ package prometheusVarsBuilder
 import (
 	"strings"
 	promQLVar "github.com/perses/perses/schemas/variables/prometheus-promql:model"
+	promLabelValuesVar "github.com/perses/perses/schemas/variables/prometheus-label-values:model"
 	"github.com/perses/perses/dac:varsBuilder"
 )
 
@@ -32,18 +33,34 @@ matchers: [ for k, _ in input {
 fullMatcher: strings.Join([for var in input {"\(var.label)=\"$\(var.label)\""}], ",")
 
 exprs: [for k, v in input {
-	"group by (" + v.label + ") (" + v.metric + "{" + matchers[k] + "})"
+    [ // switch
+        if v.pluginKind == "PrometheusPromQLVariable" {
+            "group by (" + v.label + ") (" + v.metric + "{" + matchers[k] + "})"
+        },
+        if v.pluginKind == "PrometheusLabelValuesVariable" {
+            v.metric + "{" + matchers[k] + "}"
+        },
+    ][0]
 }]
 
 let alias = input
 variables: {varsBuilder & { input: alias }}.variables & [ for id, var in input {
     spec: [ // switch
-        if var.kind == "ListVariable" {
+        if var.kind == "ListVariable" if var.pluginKind == "PrometheusPromQLVariable" {
             plugin: promQLVar & {
                 spec: {
                     datasource: kind: "PrometheusDatasource"
                     expr: exprs[id]
                     labelName: var.label
+                }
+            }
+        },
+        if var.kind == "ListVariable" if var.pluginKind == "PrometheusLabelValuesVariable" {
+            plugin: promLabelValuesVar & {
+                spec: {
+                    datasource: kind: "PrometheusDatasource"
+                    labelName: var.label
+                    matchers: [exprs[id]]
                 }
             }
         },

@@ -42,13 +42,14 @@ linuxDashboard:
           allowAllValue: true
           allowMultiple: true
           plugin:
-            kind: PrometheusPromQLVariable
+            kind: PrometheusLabelValuesVariable
             spec:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (city) (up{country="$country",region="$region",size="$size"})
               labelName: city
+              matchers:
+                - up{country="$country",region="$region",size="$size"}
     panels:
       cpuUsage:
         kind: Panel
@@ -113,13 +114,14 @@ singleFileDashboard:
           allowAllValue: false
           allowMultiple: false
           plugin:
-            kind: PrometheusPromQLVariable
+            kind: PrometheusLabelValuesVariable
             spec:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (stack) (thanos_build_info{})
               labelName: stack
+              matchers:
+                - thanos_build_info{}
       - kind: TextVariable
         spec:
           name: prometheus
@@ -263,13 +265,14 @@ windowsDashboard:
           allowAllValue: true
           allowMultiple: true
           plugin:
-            kind: PrometheusPromQLVariable
+            kind: PrometheusLabelValuesVariable
             spec:
               datasource:
                 kind: PrometheusDatasource
                 name: promDemo
-              expr: group by (city) (up{country="$country",region="$region",size="$size"})
               labelName: city
+              matchers:
+                - up{country="$country",region="$region",size="$size"}
     panels:
       cpuUsage:
         kind: Panel

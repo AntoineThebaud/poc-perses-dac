@@ -12,7 +12,7 @@ import (
 )
 
 #myVarsBuilder: prometheusVarsBuilder & {input: [
-	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", name: "PaaS", metric: "thanos_build_info", label: "stack"},
+	{pluginKind: "PrometheusLabelValuesVariable", datasourceName: "promDemo", name: "PaaS", metric: "thanos_build_info", label: "stack"},
 	{kind: "TextVariable", label: "prometheus", value: "platform", constant: true},
 	{kind: "TextVariable", label: "prometheus_namespace", value: "observability", constant: true},
 	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_namespace_labels", label: "namespace", allowMultiple: true},
