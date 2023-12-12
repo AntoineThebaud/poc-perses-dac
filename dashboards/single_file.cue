@@ -16,8 +16,10 @@ import (
 	{kind: "TextVariable", label: "prometheus", value: "platform", constant: true},
 	{kind: "TextVariable", label: "prometheus_namespace", value: "observability", constant: true},
 	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_namespace_labels", label: "namespace", allowMultiple: true},
+	{pluginKind: "PrometheusLabelNamesVariable", datasourceName: "promDemo", metric: "kube_namespace_labels", name: "namespace labels"},
 	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_info", label: "pod", allowAllValue: true, allowMultiple: true},
 	{pluginKind: "PrometheusPromQLVariable", datasourceName: "promDemo", metric: "kube_pod_container_info", label: "container", allowAllValue: true, allowMultiple: true},
+	{pluginKind: "PrometheusLabelNamesVariable", datasourceName: "promDemo", metric: "kube_pod_container_info", name: "container labels"},
 ]}
 
 #myPanels: {

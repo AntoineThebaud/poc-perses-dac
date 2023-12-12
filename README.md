@@ -51,7 +51,6 @@ This file should be regenerated after any change done to the CUE defs, in order 
 
 # TODO
 - complexify variables:
-  - prometheusVarsBuilder: support PrometheusLabelNamesVariable
-  - manage the case where a variable should not "chain" to previous ones
+  - manage the case where a variable should not "chain" to previous ones (for any type)
 - links between dashboards
 - reusable options

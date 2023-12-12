@@ -20,6 +20,19 @@ linuxDashboard:
               labelName: country
       - kind: ListVariable
         spec:
+          name: country labels
+          allowAllValue: false
+          allowMultiple: false
+          plugin:
+            kind: PrometheusLabelNamesVariable
+            spec:
+              datasource:
+                kind: PrometheusDatasource
+                name: promDemo
+              matchers:
+                - up{country="$country"}
+      - kind: ListVariable
+        spec:
           name: region
           allowAllValue: false
           allowMultiple: true
@@ -147,6 +160,19 @@ singleFileDashboard:
               labelName: namespace
       - kind: ListVariable
         spec:
+          name: namespace labels
+          allowAllValue: false
+          allowMultiple: false
+          plugin:
+            kind: PrometheusLabelNamesVariable
+            spec:
+              datasource:
+                kind: PrometheusDatasource
+                name: promDemo
+              matchers:
+                - kube_namespace_labels{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace"}
+      - kind: ListVariable
+        spec:
           name: pod
           allowAllValue: true
           allowMultiple: true
@@ -171,6 +197,19 @@ singleFileDashboard:
                 name: promDemo
               expr: group by (container) (kube_pod_container_info{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace",pod="$pod"})
               labelName: container
+      - kind: ListVariable
+        spec:
+          name: container labels
+          allowAllValue: false
+          allowMultiple: false
+          plugin:
+            kind: PrometheusLabelNamesVariable
+            spec:
+              datasource:
+                kind: PrometheusDatasource
+                name: promDemo
+              matchers:
+                - kube_pod_container_info{stack="$stack",prometheus="$prometheus",prometheus_namespace="$prometheus_namespace",namespace="$namespace",pod="$pod",container="$container"}
     panels:
       memory:
         kind: Panel
@@ -241,6 +280,19 @@ windowsDashboard:
                 name: promDemo
               expr: group by (country) (up{})
               labelName: country
+      - kind: ListVariable
+        spec:
+          name: country labels
+          allowAllValue: false
+          allowMultiple: false
+          plugin:
+            kind: PrometheusLabelNamesVariable
+            spec:
+              datasource:
+                kind: PrometheusDatasource
+                name: promDemo
+              matchers:
+                - up{country="$country"}
       - kind: ListVariable
         spec:
           name: region
