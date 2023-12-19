@@ -4,9 +4,9 @@ package pkg
 
 import (
 	"github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/dac:panelBuilder"
-	"github.com/perses/perses/dac:panelGroupBuilder"
-	"github.com/perses/perses/dac:prometheusVarsBuilder"
+	panelBuilder "github.com/perses/perses/builder:panel"
+	panelGroupBuilder "github.com/perses/perses/builder:panelGroup"
+	prometheusVarsBuilder "github.com/perses/perses/builder:prometheusVars"
 	timeseriesChart "github.com/perses/perses/schemas/panels/time-series:model"
 	promQuery "github.com/perses/perses/schemas/queries/prometheus:model"
 )

@@ -1,7 +1,7 @@
 package panels
 
 import (
-	"github.com/perses/perses/dac:panelBuilder"
+	panelBuilder "github.com/perses/perses/builder:panel"
 	timeseriesChart "github.com/perses/perses/schemas/panels/time-series:model"
 	promQuery "github.com/perses/perses/schemas/queries/prometheus:model"
 )

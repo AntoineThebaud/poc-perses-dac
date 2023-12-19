@@ -32,7 +32,7 @@ The schemas available in this poc repo correspond to the revision `3b1e341` of t
 
 ## 4. Add the dashboard builder utilities
 
-To make the development of Perses dashboards as code easier, you can copy the [`./cue.mod/usr/github.com/perses/perses/dac`](./cue.mod/usr/github.com/perses/perses/dac) folder from this repo & paste it in the same place in yours to get some useful utilities.
+To make the development of Perses dashboards as code easier, you can copy the [`./cue.mod/usr/github.com/perses/perses/builder`](./cue.mod/usr/github.com/perses/perses/builder) folder from this repo & paste it in the same place in yours to get some useful utilities.
 
 # Develop
 

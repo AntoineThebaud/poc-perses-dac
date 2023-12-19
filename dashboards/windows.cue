@@ -6,7 +6,7 @@ import (
 	"github.com/perses/perses/pkg/model/api/v1"
 	myPanels "github.com/AntoineThebaud/poc-perses-dac/panels"
 	myVars "github.com/AntoineThebaud/poc-perses-dac/variables"
-	"github.com/perses/perses/dac:panelGroupBuilder"
+	panelGroupBuilder "github.com/perses/perses/builder:panelGroup"
 )
 
 #winPanels: {

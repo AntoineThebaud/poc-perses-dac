@@ -1,14 +1,14 @@
 // "fake" perses lib created for the purpose of this POC
 // If proven relevant, should be considered added to the Perses native schemas
 
-package prometheusVarsBuilder
+package prometheusVars
 
 import (
 	"strings"
 	promQLVar "github.com/perses/perses/schemas/variables/prometheus-promql:model"
 	promLabelValuesVar "github.com/perses/perses/schemas/variables/prometheus-label-values:model"
 	promLabelNamesVar "github.com/perses/perses/schemas/variables/prometheus-label-names:model"
-	"github.com/perses/perses/dac:varsBuilder"
+	varsBuilder "github.com/perses/perses/builder:vars"
 )
 
 // expected user input

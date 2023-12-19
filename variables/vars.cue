@@ -1,7 +1,7 @@
 package variables
 
 import (
-	"github.com/perses/perses/dac:prometheusVarsBuilder"
+	prometheusVarsBuilder "github.com/perses/perses/builder:prometheusVars"
 )
 
 let ds = "promDemo"
