@@ -13,7 +13,7 @@ import "github.com/perses/perses/pkg/model/api/v1/secret"
 	authorization?: null | secret.#PublicAuthorization @go(Authorization,*secret.PublicAuthorization)
 
 	// TLSConfig to use to connect to the targets.
-	tlsConfig?: secret.#PublicTLSConfig @go(TLSConfig)
+	tlsConfig?: null | secret.#PublicTLSConfig @go(TLSConfig,*secret.PublicTLSConfig)
 }
 
 #PublicGlobalSecret: {

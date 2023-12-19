@@ -6,6 +6,5 @@ package secret
 
 _#secretToken: "<secret>"
 
-// /!\ manual override of the default generated def
 // Hidden special type for storing secrets.
-#Hidden: string | *_#secretToken
+#Hidden: _

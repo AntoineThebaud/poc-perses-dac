@@ -12,10 +12,5 @@ package secret
 	credentialsFile?: string  @go(CredentialsFile)
 }
 
-// /!\ manual override of the default generated def
 // Authorization contains HTTP authorization credentials.
-#Authorization: {
-	type:             string @go(Type)
-	credentials?:     string @go(Credentials)
-	credentialsFile?: string @go(CredentialsFile)
-}
+#Authorization: _

@@ -1,5 +1,3 @@
-// /!\ manually added file
-
 package variable
 
 #TextSpec: {

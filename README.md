@@ -15,11 +15,10 @@ go get github.com/perses/perses/pkg/model/api/v1
 cue get go github.com/perses/perses/pkg/model/api/v1
 ```
 
-## 2. Patch the CUE definitions
+## 2. Add the CUE definitions patches
 
-This should no longer be needed at some point hopefully, but for the moment the Perses model doesn't get fully converted to CUE defs because of a technical limitation in the CUE translation process: a top-value (= "any") gets generated instead of a proper def for any type that defines a custom UnmarshallJSON or UnmarshallYAML. See https://github.com/cue-lang/cue/issues/2466.
-
-You can copy the [generated files](./cue.mode/gen/github.com/perses) from this repo to get all the patches.
+Because the Perses datamodel doesnt fully get translated into CUE by the above `cue get` command, some patches are required (more context about this [here](./cue.mod/usr/github.com/perses/perses/pkg/README.md))
+You can copy the [./cue.mod/usr/github.com/perses/perses/pkg](./cue.mod/usr/github.com/perses/perses/pkg) folder from this repo & paste it in the same place in yours to get all the patches.
 
 ## 3. Add the plugins schemas
 
@@ -31,14 +30,20 @@ The schemas available in this poc repo correspond to the revision `3b1e341` of t
 
 /!\ some manual changes were done here too, but should be backported to the Perses repo at some point.
 
+## 4. Add the dashboard builder utilities
+
+To make the development of Perses dashboards as code easier, you can copy the [`./cue.mod/usr/github.com/perses/perses/dac`](./cue.mod/usr/github.com/perses/perses/dac) folder from this repo & paste it in the same place in yours to get some useful utilities.
+
 # Develop
 
-Create your panels, dashboards etc.. based on the example provided in this repo.
+Create your panels, dashboards etc.. based on the examples provided in this repo.
 
-With the provided example, in order to validate & build the final output of all the dashboards, you should run:
+With the provided examples, in order to validate & build the final output of all the dashboards, you should run:
 ```
 cue eval dashboards/* --out yaml
 ```
+
+# Contribute
 
 The end result of the CUE definitions available in this repo can be visualized with the `output.yaml` file:
 

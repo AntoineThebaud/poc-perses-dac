@@ -1,5 +1,3 @@
-// /!\ manually added file
-
 package dashboard
 
 import "github.com/perses/perses/pkg/model/api/v1/common"
@@ -28,8 +26,6 @@ import "github.com/perses/perses/pkg/model/api/v1/common"
 
 #LayoutKind: "Grid"
 
-
-// /!\ manual override of the default generated def
 #LayoutSpec: #GridLayoutSpec
 
 #Layout: {

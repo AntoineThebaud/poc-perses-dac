@@ -8,12 +8,9 @@ import "time"
 
 #Metadata: {
 	name:      string    @go(Name)
-	// /!\ manual override of the default generated def
-	createdAt?: time.Time @go(CreatedAt)
-	// /!\ manual override of the default generated def
-	updatedAt?: time.Time @go(UpdatedAt)
-	// /!\ manual override of the default generated def
-	version?:   uint64    @go(Version)
+	createdAt: time.Time @go(CreatedAt)
+	updatedAt: time.Time @go(UpdatedAt)
+	version:   uint64    @go(Version)
 }
 
 // ProjectMetadata is the metadata struct for resources that belongs to a project.

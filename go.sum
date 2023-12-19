@@ -1,7 +1,13 @@
 github.com/perses/perses v0.41.1 h1:AZAcRGiGx8sHm5/yOfb8++3ZhrLKloA+q4eFOWX3H28=
 github.com/perses/perses v0.41.1/go.mod h1:R3vVTEmSS9BeratJQM/D6BT+iPLdRTHDSLsNU7haqXo=
+github.com/perses/perses v0.42.1 h1:V/Ohg4baWmBSWSeEZJhS/2zTaVVaxX6OTO7bcUyHqck=
+github.com/perses/perses v0.42.1/go.mod h1:TSHLS3SbuCMXG2cCp6DBoqidi7RoDyfwxZS4oKaQKco=
 github.com/prometheus/common v0.44.0 h1:+5BrQJwiBB9xsMygAB3TNvpQKOwlkc25LbISbrdOOfY=
 github.com/prometheus/common v0.44.0/go.mod h1:ofAIvZbQ1e/nugmZGz4/qCb9Ap1VoSTIO7x0VV9VvuY=
+github.com/prometheus/common v0.45.0 h1:2BGz0eBc2hdMDLnO/8n0jeB3oPrt2D08CekT0lneoxM=
+github.com/prometheus/common v0.45.0/go.mod h1:YJmSTw9BoKxJplESWWxlbyttQR4uaEcGyv9MZjVOJsY=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=
 gopkg.in/yaml.v2 v2.4.0/go.mod h1:RDklbk79AGWmwhnvt/jBztapEOGDOx6ZbXqjP6csGnQ=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=

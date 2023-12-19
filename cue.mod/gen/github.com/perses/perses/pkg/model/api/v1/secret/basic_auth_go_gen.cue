@@ -12,9 +12,4 @@ package secret
 	passwordFile?: string  @go(PasswordFile)
 }
 
-// /!\ manual override of the default generated def
-#BasicAuth: {
-	username:      string @go(Username)
-	password?:     string @go(Password)
-	passwordFile?: string @go(PasswordFile)
-}
+#BasicAuth: _

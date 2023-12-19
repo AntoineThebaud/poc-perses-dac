@@ -4,14 +4,7 @@
 
 package v1
 
-import "github.com/perses/perses/pkg/model/api/v1/secret"
-
-// /!\ manual override of the default generated def
-#SecretSpec: {
-	basicAuth?:     secret.#BasicAuth     @go(BasicAuth)
-	authorization?: secret.#Authorization @go(Authorization)
-	tlsConfig?:     secret.#TLSConfig     @go(TLSConfig)
-}
+#SecretSpec: _
 
 #GlobalSecret: {
 	kind:     #Kind       @go(Kind)

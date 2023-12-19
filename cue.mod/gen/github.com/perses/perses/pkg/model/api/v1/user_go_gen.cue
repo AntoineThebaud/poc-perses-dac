@@ -4,6 +4,10 @@
 
 package v1
 
-#FolderSpec: _
+#UserSpec: {
+	firstName?: string @go(FirstName)
+	lastName?:  string @go(LastName)
+	password?:  string @go(Password)
+}
 
-#Folder: _
+#User: _

@@ -4,23 +4,35 @@
 
 package v1
 
-// /!\ manual override of the default generated def
-#Kind: #KindDashboard |
+#Kind: _ // #enumKind
+
+#enumKind:
+	#KindDashboard |
 	#KindDatasource |
 	#KindFolder |
 	#KindGlobalDatasource |
+	#KindGlobalRole |
+	#KindGlobalRoleBinding |
 	#KindGlobalVariable |
 	#KindGlobalSecret |
 	#KindProject |
+	#KindRole |
+	#KindRoleBinding |
 	#KindSecret |
+	#KindUser |
 	#KindVariable
 
-#KindDashboard:        "Dashboard"
-#KindDatasource:       "Datasource"
-#KindFolder:           "Folder"
-#KindGlobalDatasource: "GlobalDatasource"
-#KindGlobalVariable:   "GlobalVariable"
-#KindGlobalSecret:     "GlobalSecret"
-#KindProject:          "Project"
-#KindSecret:           "Secret"
-#KindVariable:         "Variable"
+#KindDashboard:         #Kind & "Dashboard"
+#KindDatasource:        #Kind & "Datasource"
+#KindFolder:            #Kind & "Folder"
+#KindGlobalDatasource:  #Kind & "GlobalDatasource"
+#KindGlobalRole:        #Kind & "GlobalRole"
+#KindGlobalRoleBinding: #Kind & "GlobalRoleBinding"
+#KindGlobalVariable:    #Kind & "GlobalVariable"
+#KindGlobalSecret:      #Kind & "GlobalSecret"
+#KindProject:           #Kind & "Project"
+#KindRole:              #Kind & "Role"
+#KindRoleBinding:       #Kind & "RoleBinding"
+#KindSecret:            #Kind & "Secret"
+#KindUser:              #Kind & "User"
+#KindVariable:          #Kind & "Variable"

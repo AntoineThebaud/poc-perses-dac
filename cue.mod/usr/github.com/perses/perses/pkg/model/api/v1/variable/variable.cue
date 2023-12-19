@@ -1,5 +1,3 @@
-// /!\ manually added file
-
 package variable
 
 #Kind: #KindText | #KindList
