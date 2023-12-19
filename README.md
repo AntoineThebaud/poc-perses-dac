@@ -50,7 +50,5 @@ cue eval dashboards/* --out yaml > output.yaml
 This file should be regenerated after any change done to the CUE defs, in order to have it always in sync & reflecting the current state of the schemas.
 
 # TODO
-- complexify variables:
-  - manage the case where a variable should not "chain" to previous ones (for any type)
-- links between dashboards
+- links between dashboards (/!\ depends on https://github.com/perses/perses/issues/1642 implem)
 - reusable options
