@@ -34,25 +34,11 @@ input: [for var in input {
 	}
 }]
 
-_computeMatcher: {
-	var: #listInputItem | #textInputItem
-
-	result: [ //switch
-		if var.kind == "ListVariable" if var.pluginKind == "PrometheusPromQLVariable" || var.pluginKind == "PrometheusLabelValuesVariable" {
-			"\(var.label)=\"$\(var.label)\""
-		},
-		if var.kind == "TextVariable" {
-			"\(var.label)=\"$\(var.label)\""
-		},
-		null
-	][0]
-}
-
 // outputs
 matchers: [for k, _ in input {
 	strings.Join(
-		[for k2, myVar in input if k2 < k if {_computeMatcher & {var: myVar}}.result != null {
-			{_computeMatcher & {var: myVar}}.result
+		[for k2, var in input if k2 < k if var.label != _|_ {
+			"\(var.label)=\"$\(var.label)\""
 		}],
 		","
 	)
