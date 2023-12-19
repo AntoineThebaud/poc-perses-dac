@@ -23,7 +23,6 @@ input: #input
 #textInputItem: {
 	varsBuilder.#textInputItem
 	name: string | *label // map name to label by default
-	metric: "placeholder" // not-used value, just to have loop working
 	label: string
 }
 
