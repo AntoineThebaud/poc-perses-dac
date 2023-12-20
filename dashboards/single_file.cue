@@ -4,14 +4,14 @@ package pkg
 
 import (
 	"github.com/perses/perses/pkg/model/api/v1"
-	panelBuilder "github.com/perses/perses/builder:panel"
+	panelBuilder "github.com/perses/perses/builder:prometheusPanel"
 	panelGroupBuilder "github.com/perses/perses/builder:panelGroup"
-	prometheusVarsBuilder "github.com/perses/perses/builder:prometheusVars"
+	varsBuilder "github.com/perses/perses/builder:prometheusVars"
 	timeseriesChart "github.com/perses/perses/schemas/panels/time-series:model"
 	promQuery "github.com/perses/perses/schemas/queries/prometheus:model"
 )
 
-#myVarsBuilder: prometheusVarsBuilder & {input: [
+#myVarsBuilder: varsBuilder & {input: [
 	{pluginKind: "PrometheusLabelValuesVariable", datasourceName: "promDemo", name: "PaaS", metric: "thanos_build_info", label: "stack"},
 	{kind: "TextVariable", label: "prometheus", value: "platform", constant: true},
 	{kind: "TextVariable", label: "prometheus_namespace", value: "observability", constant: true},

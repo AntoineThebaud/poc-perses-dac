@@ -1,7 +1,7 @@
 // "fake" perses lib created for the purpose of this POC
 // If proven relevant, should be considered added to the Perses native schemas
 
-package panel
+package prometheusPanel
 
 import (
 	"strings"
