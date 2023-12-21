@@ -166,7 +166,7 @@ singleFileDashboard:
               labelName: namespace
       - kind: ListVariable
         spec:
-          name: namespace labels
+          name: namespace_labels
           allowAllValue: false
           allowMultiple: false
           plugin:
@@ -205,7 +205,7 @@ singleFileDashboard:
               labelName: container
       - kind: ListVariable
         spec:
-          name: container labels
+          name: container_labels
           allowAllValue: false
           allowMultiple: false
           plugin:
